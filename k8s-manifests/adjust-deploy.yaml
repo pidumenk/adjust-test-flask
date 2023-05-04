@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: adjust
+  name: adjust-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: adjust
+  template:
+    metadata:
+      labels:
+        app: adjust
+    spec:
+      containers:
+      - image: adjust-app:flask # or specify pidumenk/adjust-app:flask and comment imagePullPolicy line 
+        name: adjust-app
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 8080
+        livenessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
