@@ -106,4 +106,4 @@ In order to use local docker images with Minikube, [following steps](https://sta
 
 Additionally, I have built the image and uploaded it on Docker Hub. If it's necessary, it could be configured on k8s manifest file.
 
-`docker pull pidumenk/adjust-app:latest`
+`docker pull pidumenk/adjust-app:flask`
